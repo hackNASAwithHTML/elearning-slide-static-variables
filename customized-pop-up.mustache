@@ -1,0 +1,153 @@
+<style>
+    #fade {
+  display: none;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 1001;
+  -moz-opacity: 0.8;
+  opacity: .80;
+  filter: alpha(opacity=80);
+}
+
+#light {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 600px;
+  max-height: 360px;
+  margin-left: -300px;
+  margin-top: -180px;
+  border: transparent;
+  background: transparent;
+  z-index: 1002;
+  overflow: visible;
+}
+
+#boxclose {
+  float: right;
+  cursor: pointer;
+  color: #fff;
+  border: 1px solid #AEAEAE;
+  border-radius: 3px;
+  background: #222222;
+  font-size: 31px;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 0px;
+  padding: 11px 3px;
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  z-index: 1002;
+  opacity: 0.9;
+}
+
+.boxclose:before {
+  content: "x";
+}
+
+#fade:hover ~ #boxclose {
+  display:none;
+}
+
+.test:hover ~ .test2 {
+  display: none;
+}
+#tv_container {
+    background: url('{{{config.wwwroot}}}/theme/phlstudent/img/phl_logo.PNG');
+    width: 691px; /* Adjust TV image width */
+    height: 450px; /* Adjust TV image height */
+    position: relative;
+}
+#tv_container video {
+    position: absolute;
+    top: 70px; /* Adjust top position */
+    left: 90px; /* Adjust left position */
+}
+.top-right {
+  position: absolute;
+  top: 4px;
+  right: 310px;
+}
+.hello-name {
+  text-align: center;
+}
+.down-top-right {
+  position: absolute;
+  top: 30px;
+  right: 90px;
+}
+.bottom-left {
+  position: absolute;
+  bottom: 44px;
+  left: 130px;
+}
+.down-bottom-left {
+  position: absolute;
+  bottom: 24px;
+  left: 160px;
+}
+.down-down-bottom-left {
+  position: absolute;
+  bottom: 4px;
+  left: 185px;
+}
+</style>
+<div id="light">
+    <div id="tv_container">
+        <div class="hello-name">
+            <p style="color:#DDB03B;">Xin chào <b>{{{firstname}}} {{{lastname}}}</b></p>
+        </div>
+        <div class="down-top-right">
+            <p style="color:black;">Chào mừng bạn đến với hệ thống Đào tạo trực tuyến PHU HUNG LIFE</p>
+        </div>
+        <div class="bottom-left">
+            <p style="color:black;">Hi vọng bạn sẽ có những trải nghiệm học tập tuyệt vời</p>
+        </div>
+        <div class="down-bottom-left">
+            <p style="color:black;">Mọi yêu cầu, thắc mắc và góp, vui lòng liên hệ</p>
+        </div>
+        <div class="down-down-bottom-left">
+            <p style="color:#DDB03B;">Email:................................ .Hotline : 113</p>
+        </div>
+        <a class="boxclose" id="boxclose" onclick="lightbox_close();"></a>
+        <video autoplay="true" width="500" loop autoplay muted controls>
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+            <!--Browser does not support <video> tag -->
+          </video>
+    </div>
+</div>
+  
+<div id="fade" onClick="lightbox_close();"></div>
+<script>
+window.document.onkeydown = function(e) {
+  if (!e) {
+    e = event;
+  }
+  if (e.keyCode == 27) {
+    lightbox_close();
+  }
+}
+
+
+function lightbox_close() {
+  var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  document.getElementById('light').style.display = 'none';
+  document.getElementById('fade').style.display = 'none';
+  lightBoxVideo.pause();
+}
+function popup() { 
+    var lightBoxVideo = document.getElementById("VisaChipCardVideo");
+  window.scrollTo(0, 0);
+  document.getElementById('light').style.display = 'block';
+  document.getElementById('fade').style.display = 'block';
+  lightBoxVideo.play();
+}
+
+window.setTimeout(popup,3000);
+</script>
